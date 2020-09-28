@@ -39,9 +39,7 @@ let TodoForm = props => {
 	}
 
 	const handleKeyPress = e => {
-		if (e.key === "Enter") {
-			handleClickButton();
-		}
+		if (e.key === "Enter") handleClickButton();
 	}
 
 	return (

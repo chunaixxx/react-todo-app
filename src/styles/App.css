@@ -23,13 +23,3 @@ body, html {
 	font-weight: 100;
 	color: #333;
 }
-
-.form {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.form__submit {
-	margin-left: 30px;
-}

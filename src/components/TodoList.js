@@ -6,6 +6,9 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import DeleteIcon from '@material-ui/icons/Delete';
+
+import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,13 +22,10 @@ const useStyles = makeStyles((theme) => ({
 		justifityContent: 'spaceBetween'
 	},
 	list__delete: {
-		backgroundColor: '#f44336',
-		color: '#fff',
-
-		marginLeft: '30px',
+		transition: '.1s ease',
 
 		'&:hover': {
-			backgroundColor: '#d32f2f',
+			color: '#f44336',
 		}
 	}
 }));
@@ -43,11 +43,13 @@ const TodoList = props => {
 							className={ classes.list__item }
 						>
 							<ListItemText primary={item.text} />
-							<Button         
-								variant="contained"
-								onClick={ () => props.removeTodo(item.id) }
-								className={ classes.list__delete }
-							>DELETE</Button>
+								<IconButton 
+									aria-label="delete"
+									onClick={ () => props.removeTodo(item.id) }
+									className={ classes.list__delete }
+								>
+									<DeleteIcon />
+								</IconButton>
 						</ListItem>
 					)
 				)

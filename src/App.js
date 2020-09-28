@@ -16,7 +16,7 @@ const App = () => {
 	const addTodo = textAreaValue => {
 		if (!textAreaValue.length) return;
 
-		setTodos(prevState => [...prevState, {id: todosCount, text: textAreaValue}]);
+		setTodos(prevState => [...prevState, {id: todosCount, text: textAreaValue, done: false}]);
 		setTodosCount(prevState => prevState + 1);
 	}
 		
