@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './styles/App.css';
 
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
 const App = () => {
-	const [todos, setTodos] = useState([]);
-	const [todosCount, setTodosCount] = useState(0);
+	const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
+	const [todosCount, setTodosCount] = useState(JSON.parse(localStorage.getItem('todosCount')) || 0);
+
+	useEffect(() => {
+		localStorage.setItem('todos', JSON.stringify(todos));
+		localStorage.setItem('todosCount', JSON.stringify(todosCount));
+	});
 
 	const addTodo = textAreaValue => {
+		if (!textAreaValue.length) return;
+
 		setTodos(prevState => [...prevState, {id: todosCount, text: textAreaValue}]);
 		setTodosCount(prevState => prevState + 1);
 	}

@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
 	list: {
 		minWidth: '400px',
+		maxWidth: '800px',
 		marginTop: '25px'
 	},
 	list__item: {
