@@ -11,7 +11,7 @@ const App = () => {
 	useEffect(() => {
 		localStorage.setItem('todos', JSON.stringify(todos));
 		localStorage.setItem('todosCount', JSON.stringify(todosCount));
-	});
+	}, [todos]);
 
 	const addTodo = textAreaValue => {
 		if (!textAreaValue.length) return;
