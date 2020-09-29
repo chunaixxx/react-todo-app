@@ -8,8 +8,13 @@ body, html {
 	font-family: Arial, sans-serif;
 }
 
+body {
+	display: flex;
+	justify-content: center;
+}
+
 .main {
-	width: 100%;
+	max-width: 700px;
 	height: 100vh;
 
 	padding-top: 150px;

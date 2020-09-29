@@ -30,12 +30,25 @@ const App = () => {
 		setTodos(todosNew);
 	}
 
+	const handleClickStar = id => {
+		let todosNew = [...todos];
+
+		todos.forEach((el, index) => {
+			if (el.id == id) todosNew[index].done = !todosNew[index].done;
+		})
+
+		setTodos(todosNew);
+	}
+
 	return (
 		<main className="main">
 			<h1 className="main__title">TODO</h1>
 
 			<TodoForm addTodo={(textAreaValue) => addTodo(textAreaValue)}/>
-			<TodoList todos={ todos } removeTodo={ id => removeTodo(id) }/>
+			<TodoList todos={ todos } 
+					  removeTodo={ id => removeTodo(id) }
+					  handleClickStar={ id => handleClickStar(id) }
+			/>
 		</main>
 	)
 }

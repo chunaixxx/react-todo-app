@@ -6,6 +6,10 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import Checkbox from '@material-ui/core/Checkbox';
+import StarIcon from '@material-ui/icons/Star';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import IconButton from '@material-ui/core/IconButton';
@@ -13,13 +17,16 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
 	list: {
-		minWidth: '400px',
-		maxWidth: '800px',
+		width: '100%',
 		marginTop: '25px'
 	},
 	list__item: {
 		display: 'flex',
-		justifityContent: 'spaceBetween'
+		justifityContent: 'spaceBetween',
+		padding: '0px'
+	},
+	list__star: {
+		color: '#ffd847',
 	},
 	list__delete: {
 		transition: '.1s ease',
@@ -43,13 +50,21 @@ const TodoList = props => {
 							className={ classes.list__item }
 						>
 							<ListItemText primary={item.text} />
-								<IconButton 
-									aria-label="delete"
-									onClick={ () => props.removeTodo(item.id) }
-									className={ classes.list__delete }
-								>
-									<DeleteIcon />
-								</IconButton>
+							<Checkbox
+								checked={item.done ? true : false}
+								onChange={ () => props.handleClickStar(item.id) }
+								icon={ <StarBorderIcon / > }
+								checkedIcon={ <StarIcon className={ classes.list__star } /> }
+							/>
+
+
+							<IconButton 
+								aria-label="delete"
+								onClick={ () => props.removeTodo(item.id) }
+								className={ classes.list__delete }
+							>
+								<DeleteIcon />
+							</IconButton>
 						</ListItem>
 					)
 				)
