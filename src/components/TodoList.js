@@ -13,7 +13,6 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
 	list: {
@@ -23,13 +22,28 @@ const useStyles = makeStyles((theme) => ({
 	list__item: {
 		display: 'flex',
 		justifityContent: 'spaceBetween',
-		padding: '0px'
+		padding: '0px',
+		backgroundColor: '#fff',
+		marginBottom: '10px',
+		padding: '5px 30px',
+		boxShadow: '0 7px 14px rgba(0,0,0,0.1)',
 	},
-	list__star: {
+	list__done: {
+		'&.Mui-checked': {
+			color: '#4caf50',
+		}
+	},
+	list__importantCheckbox: {
+		'&.Mui-checked': {
+			color: '#ffd847',
+		}
+	},
+	list__importantIcon_checked: {
 		color: '#ffd847',
 	},
 	list__delete: {
 		transition: '.1s ease',
+		padding: '9px',
 
 		'&:hover': {
 			color: '#f44336',
@@ -49,17 +63,26 @@ const TodoList = props => {
 							key={ item.id } 
 							className={ classes.list__item }
 						>
-							<ListItemText primary={item.text} />
+							<ListItemText
+								className={ classes.list__text }
+								primary={ item.text } 
+							/>
 							<Checkbox
+								className={ classes.list__done }
 								checked={item.done ? true : false}
-								onChange={ () => props.handleClickStar(item.id) }
-								icon={ <StarBorderIcon / > }
-								checkedIcon={ <StarIcon className={ classes.list__star } /> }
+								onChange={ () => props.handleClickDone(item.id) }
 							/>
 
+							<Checkbox
+								className={ classes.list__importantCheckbox }
+
+								checked={item.important ? true : false}
+								onChange={ () => props.handleClickStar(item.id) }
+								icon={ <StarBorderIcon className={ classes.list__importantIcon } /> }
+								checkedIcon={ <StarIcon className={ classes.list__importantIcon_checked } /> }
+							/>
 
 							<IconButton 
-								aria-label="delete"
 								onClick={ () => props.removeTodo(item.id) }
 								className={ classes.list__delete }
 							>

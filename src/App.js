@@ -16,7 +16,7 @@ const App = () => {
 	const addTodo = textAreaValue => {
 		if (!textAreaValue.length) return;
 
-		setTodos(prevState => [...prevState, {id: todosCount, text: textAreaValue, done: false}]);
+		setTodos(prevState => [...prevState, {id: todosCount, text: textAreaValue, important: false}]);
 		setTodosCount(prevState => prevState + 1);
 	}
 		
@@ -34,6 +34,16 @@ const App = () => {
 		let todosNew = [...todos];
 
 		todos.forEach((el, index) => {
+			if (el.id == id) todosNew[index].important = !todosNew[index].important;
+		})
+
+		setTodos(todosNew);
+	}
+
+	const handleClickDone = id => {
+		let todosNew = [...todos];
+
+		todos.forEach((el, index) => {
 			if (el.id == id) todosNew[index].done = !todosNew[index].done;
 		})
 
@@ -48,6 +58,7 @@ const App = () => {
 			<TodoList todos={ todos } 
 					  removeTodo={ id => removeTodo(id) }
 					  handleClickStar={ id => handleClickStar(id) }
+					  handleClickDone={ id => handleClickDone(id) }
 			/>
 		</main>
 	)

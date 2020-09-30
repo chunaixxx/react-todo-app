@@ -11,6 +11,7 @@ body, html {
 body {
 	display: flex;
 	justify-content: center;
+	background-color: #f9f7f7;
 }
 
 .main {
