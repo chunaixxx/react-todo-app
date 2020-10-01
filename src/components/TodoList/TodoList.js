@@ -38,6 +38,14 @@ const TodoList = props => {
 
 	const [ isAnimated, setIsAnimated ]= useState(false);
 
+	
+	// Переключаем css-класс с анимацией, которая показывает перечеркнутый текст и изменяем значение задания
+	const handleClickDone = id => {
+			const el = document.querySelector(`#list__item-${id} .list__text`);
+			el.classList.toggle('list__text_done');
+			props.toggleItemDone(id);
+	}
+
 	const handleClickDelete = id => {
 		// Проверяем анимирован ли список
 		if (!isAnimated) {
@@ -65,13 +73,13 @@ const TodoList = props => {
 							className={'list__item'}
 							id={ `list__item-${item.id}` }
 						>
-							<div className={ 'list__text' }> { item.text } </div>
+							<div className={ item.done ? 'list__text list__text_done' : 'list__text'} > { item.text } </div>
 
 							<div className={ 'list__container' }>
 								<Checkbox
 									className={ classes.list__done }
 									checked={item.done ? true : false}
-									onChange={ () => props.handleClickDone(item.id) }
+									onChange={ () => handleClickDone(item.id) }
 									color='default'
 								/>
 
@@ -79,7 +87,7 @@ const TodoList = props => {
 									className={ classes.list__importantCheckbox }
 									color='default'
 									checked={item.important ? true : false}
-									onChange={ () => props.handleClickStar(item.id) }
+									onChange={ () => props.toggleItemStar(item.id) }
 									icon={ <StarBorderIcon className={ classes.list__importantIcon } /> }
 									checkedIcon={ <StarIcon className={ classes.list__importantIcon_checked } /> }
 								/>

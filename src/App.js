@@ -32,7 +32,7 @@ const App = () => {
 		setTodos(todosNew);
 	}
 
-	const handleClickStar = id => {
+	const toggleItemStar = id => {
 		let todosNew = [...todos];
 
 		todos.forEach((el, index) => {
@@ -42,7 +42,7 @@ const App = () => {
 		setTodos(todosNew);
 	}
 
-	const handleClickDone = id => {
+	const toggleItemDone = id => {
 		let todosNew = [...todos];
 
 		todos.forEach((el, index) => {
@@ -59,8 +59,8 @@ const App = () => {
 			<TodoForm addTodo={(textAreaValue) => addTodo(textAreaValue)}/>
 			<TodoList todos={ todos } 
 					  removeTodo={ id => removeTodo(id) }
-					  handleClickStar={ id => handleClickStar(id) }
-					  handleClickDone={ id => handleClickDone(id) }
+					  toggleItemStar={ id => toggleItemStar(id) }
+					  toggleItemDone={ id => toggleItemDone(id) }
 			/>
 		</main>
 	)

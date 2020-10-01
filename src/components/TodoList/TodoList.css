@@ -22,4 +22,20 @@
 .list__text {
 	display: flex;
 	align-items: center;
+	position: relative;
+	color: #333
+}
+
+.list__text:before {
+	position: absolute;
+	content: '';
+	transition: width .3s;
+	width: 0%;
+	height: 1px;
+	background-color: #222;
+}
+
+.list__text.list__text_done:before {
+	transition: width .3s;
+	width: 100%;
 }
