@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import './styles/App.css';
 
-import TodoForm from './components/TodoForm';
-import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm/TodoForm';
+import TodoList from './components/TodoList/TodoList';
 
 const App = () => {
 	const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
@@ -16,7 +16,7 @@ const App = () => {
 	const addTodo = textAreaValue => {
 		if (!textAreaValue.length) return;
 
-		setTodos(prevState => [...prevState, {id: todosCount, text: textAreaValue, important: false}]);
+		setTodos(prevState => [...prevState, {id: todosCount, text: textAreaValue, important: false, }]);
 		setTodosCount(prevState => prevState + 1);
 	}
 		
@@ -24,7 +24,9 @@ const App = () => {
 		let todosNew = [...todos];
 
 		todos.forEach((el, index) => {
-			if (el.id == id) todosNew.splice(index, 1);
+			if (el.id == id) {
+				todosNew.splice(index, 1);
+			}
 		})
 
 		setTodos(todosNew);
