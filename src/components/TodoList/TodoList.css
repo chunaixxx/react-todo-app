@@ -11,7 +11,7 @@
 	margin-bottom: 10px;
 	padding: 5px 30px;
 	box-shadow: 0 7px 14px rgba(0,0,0,0.1);
-	transition: 1s;
+	transition: .3s;
 
 	height: 50px;
 
@@ -40,7 +40,7 @@
 	left: 0;
 	top: 0;
 
-	transition: .5s;
+	transition: .3s;
 }
 
 .list__item_animated:before {
@@ -58,13 +58,13 @@
 .list__text:before {
 	position: absolute;
 	content: '';
-	transition: width .3s;
+	transition: width .2s;
 	width: 0%;
 	height: 1px;
 	background-color: #222;
 }
 
 .list__text.list__text_done:before {
-	transition: width .3s;
+	transition: width .2s;
 	width: 100%;
 }

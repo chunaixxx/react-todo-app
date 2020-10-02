@@ -18,7 +18,7 @@ const TodoList = props => {
 			setTimeout(() => {
 				props.removeTodo(id);
 				setIsAnimated(false);
-			}, 1000);
+			}, 300);
 		}		
 	}
 

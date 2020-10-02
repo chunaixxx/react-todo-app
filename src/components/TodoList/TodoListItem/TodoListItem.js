@@ -10,8 +10,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 import IconButton from '@material-ui/core/IconButton';
 
-import './TodoListItem.css';
-
 // Material UI CSS
 const useStyles = makeStyles((theme) => ({
 	list__done: {
