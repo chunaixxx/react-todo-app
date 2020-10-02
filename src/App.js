@@ -8,18 +8,21 @@ const App = () => {
 	const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
 	const [todosCount, setTodosCount] = useState(JSON.parse(localStorage.getItem('todosCount')) || 0);
 
+	// Фиксировать новый TODO-список в кэше при каждом его обновлении
 	useEffect(() => {
 		localStorage.setItem('todos', JSON.stringify(todos));
 		localStorage.setItem('todosCount', JSON.stringify(todosCount));
 	}, [todos]);
 
+	// Добавить задачу
 	const addTodo = textAreaValue => {
 		if (!textAreaValue.length) return;
 
-		setTodos(prevState => [...prevState, {id: todosCount, text: textAreaValue, important: false, }]);
+		setTodos(prevState => [...prevState, {id: todosCount, text: textAreaValue, important: false, done: false}]);
 		setTodosCount(prevState => prevState + 1);
 	}
-		
+	
+	// Удалить задачу
 	const removeTodo = id => {
 		let todosNew = [...todos];
 
@@ -32,6 +35,7 @@ const App = () => {
 		setTodos(todosNew);
 	}
 
+	// Зафиксировать изменение "звездочки" у задачи
 	const toggleItemStar = id => {
 		let todosNew = [...todos];
 
@@ -42,6 +46,7 @@ const App = () => {
 		setTodos(todosNew);
 	}
 
+	// Зафиксировать изменение "выполнено" у задачи
 	const toggleItemDone = id => {
 		let todosNew = [...todos];
 

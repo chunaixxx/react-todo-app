@@ -60,7 +60,9 @@ let TodoForm = props => {
 				variant="contained"
 				className={classes.form__submit}
 				onClick={() => handleClickButton()}
-			>ADD</Button>
+			>
+				ADD
+			</Button>
 		</form>
 	)
 }
