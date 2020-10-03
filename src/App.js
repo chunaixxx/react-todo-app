@@ -7,6 +7,7 @@ import TodoList from './components/TodoList/TodoList';
 const App = () => {
 	const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
 	const [todosCount, setTodosCount] = useState(JSON.parse(localStorage.getItem('todosCount')) || 0);
+	const [newTodo, setNewTodo] = useState({});
 
 	// Фиксировать новый TODO-список в кэше при каждом его обновлении
 	useEffect(() => {
@@ -18,8 +19,9 @@ const App = () => {
 	const addTodo = textAreaValue => {
 		if (!textAreaValue.length) return;
 
-		setTodos(prevState => [...prevState, {id: todosCount, text: textAreaValue, important: false, done: false}]);
+		setTodos(prevState => [ {id: todosCount, text: textAreaValue, important: false, done: false}, ...prevState ]);
 		setTodosCount(prevState => prevState + 1);
+		setNewTodo({id: todosCount, text: textAreaValue, important: false, done: false});
 	}
 	
 	// Удалить задачу
@@ -62,7 +64,8 @@ const App = () => {
 			<h1 className="main__title">TODO</h1>
 
 			<TodoForm addTodo={(textAreaValue) => addTodo(textAreaValue)}/>
-			<TodoList todos={ todos } 
+			<TodoList todos={ todos }
+					  newTodo= { newTodo }
 					  removeTodo={ id => removeTodo(id) }
 					  toggleItemStar={ id => toggleItemStar(id) }
 					  toggleItemDone={ id => toggleItemDone(id) }

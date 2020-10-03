@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 const TodoListItem = props => {
 	const classes = useStyles();
 
+	const [classTodoItem, setClassTodoItem] = useState('list__item');
 	const todoRef = useRef(null);
 	const todoTextRef = useRef(null);
 
@@ -42,10 +43,21 @@ const TodoListItem = props => {
 		props.toggleItemDone(id);
 	}
 
+	// Является ли задча новой в списке? Если да, то добавляем класс с анимацией
+	useEffect(() => {
+		if (props.newTodo) {
+			setClassTodoItem('list__item list__item_add');
+	
+			setTimeout(() => {
+				setClassTodoItem('list__item')
+			}, 300);
+		}
+	}, [])
+
 	let { id, text, done, important } = props.item;
 
 	return (
-		<li className={'list__item'} ref={ todoRef } >
+		<li className={classTodoItem} ref={ todoRef } >
 			{/* Содержимое задачи */}
 			<div 
 				className={ done ? 'list__text list__text_done' : 'list__text'} 

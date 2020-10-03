@@ -36,13 +36,13 @@ let TodoForm = props => {
 	const handleChangeTextField = e => 
 		setTextAreaValue(e.target.value);
 
-	const handleClickButton = () => {
+	const handleNewTodo = () => {
 		props.addTodo(textAreaValue);
 		setTextAreaValue('');
 	}
 
 	const handleKeyPress = e => {
-		if (e.key === "Enter") handleClickButton();
+		if (e.key === "Enter") handleNewTodo();
 	}
 
 	return (
@@ -59,7 +59,7 @@ let TodoForm = props => {
 			<Button         
 				variant="contained"
 				className={classes.form__submit}
-				onClick={() => handleClickButton()}
+				onClick={() => handleNewTodo()}
 			>
 				ADD
 			</Button>

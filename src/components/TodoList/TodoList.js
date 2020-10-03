@@ -12,7 +12,7 @@ const TodoList = props => {
 			setIsAnimated(true);
 
 			// Добавляем задаче класс с анимацией
-			el.classList.add('list__item_animated');
+			el.classList.add('list__item_delete');
 			
 			// Удаляем задачу после завершения анимации и говорим, что список больше не анимирован
 			setTimeout(() => {
@@ -30,6 +30,7 @@ const TodoList = props => {
 						<TodoListItem 
 							key={ todo.id }
 
+							newTodo={ props.newTodo.id == todo.id }
 							item={ todo }
 							toggleItemStar={ () => props.toggleItemStar(todo.id) }
 							toggleItemDone={ () => props.toggleItemDone(todo.id) }	

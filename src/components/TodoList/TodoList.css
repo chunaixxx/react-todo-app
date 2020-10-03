@@ -4,31 +4,25 @@
 }
 
 .list__item {
+	position: relative;
+
 	display: flex;
 	justify-content: space-between;
-	padding: 0px;
+
 	background-color: #fff;
+	box-shadow: 0 7px 14px rgba(0,0,0,0.1);
+
 	margin-bottom: 10px;
 	padding: 5px 30px;
-	box-shadow: 0 7px 14px rgba(0,0,0,0.1);
+	
 	transition: .3s;
 
 	height: 50px;
-
-	position: relative;
+	min-height: 50px;
+	transform: scale(1);
 }
 
-/* Удаление задачи */
-.list__item_animated {
-	height: 0px;
-	overflow: hidden;
-	padding: 0 30px;
-	margin-bottom: 0px;
-
-	transform: translateY(5px) scale(0);
-}
-
-/* Наложение белого фона сверху при удалении задачи*/
+/* Создание белого фона, который появляется сверху при удалении*/
 .list__item:before {
 	content: '';
 	position: absolute;
@@ -43,7 +37,30 @@
 	transition: .3s;
 }
 
-.list__item_animated:before {
+/* Новая задача */
+.list__item_add {
+	overflow: hidden;
+	min-height: 0px;
+	height: 0px;
+
+	margin-bottom: 0px;
+	padding: 0;
+
+	transition: .3s;
+	transform: scale(0);
+}
+
+/* Удаление задачи */
+.list__item_delete {
+	min-height: 0px;
+	height: 0px;
+	overflow: hidden;
+	padding: 0 30px;
+	margin-bottom: 0px;
+	transform: scale(0);
+}
+
+.list__item_delete:before {
 	z-index: 1;
 	opacity: 1;
 }
