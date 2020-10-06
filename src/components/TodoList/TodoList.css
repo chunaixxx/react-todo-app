@@ -17,7 +17,6 @@
 	
 	transition: .3s;
 
-	height: 50px;
 	min-height: 50px;
 	transform: scale(1);
 }
@@ -69,19 +68,15 @@
 	display: flex;
 	align-items: center;
 	position: relative;
-	color: #333
+	color: #333;
+	transition: .3s;
 }
 
-.list__text:before {
-	position: absolute;
-	content: '';
-	transition: width .2s;
-	width: 0%;
-	height: 1px;
-	background-color: #222;
+.list__text_done {
+	color: rgba(51, 51, 51, .5) /* color: #333 with opacity .5 */
 }
 
-.list__text.list__text_done:before {
-	transition: width .2s;
-	width: 100%;
+
+.list__container {
+	display: flex;
 }
