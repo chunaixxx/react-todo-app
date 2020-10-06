@@ -26,17 +26,7 @@ const App = () => {
 	}
 	
 	// Удалить задачу
-	const removeTodo = id => {
-		let todosNew = [...todos];
-
-		todos.forEach((el, index) => {
-			if (el.id == id) {
-				todosNew.splice(index, 1);
-			}
-		})
-
-		setTodos(todosNew);
-	}
+	const removeTodo = id => setTodos(todos.filter(el => el.id !== id))
 
 	// Зафиксировать изменение "звездочки" у задачи
 	const toggleItemStar = id => {
