@@ -3,6 +3,7 @@ import './styles/App.css';
 
 import TodoForm from './components/TodoForm/TodoForm';
 import TodoList from './components/TodoList/TodoList';
+import Container from '@material-ui/core/Container';
 
 const App = () => {
 	const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
@@ -60,17 +61,19 @@ const App = () => {
 	}
 
 	return (
-		<main className="main">
-			<h1 className="main__title">TODO</h1>
+		<Container maxWidth="md">
+			<main className="main" >
+				<h1 className="main__title">Мой список задач</h1>
 
-			<TodoForm addTodo={(textAreaValue) => addTodo(textAreaValue)}/>
-			<TodoList todos={ todos }
-					  newTodo= { newTodo }
-					  removeTodo={ id => removeTodo(id) }
-					  toggleItemStar={ id => toggleItemStar(id) }
-					  toggleItemDone={ id => toggleItemDone(id) }
-			/>
-		</main>
+				<TodoForm addTodo={(textAreaValue) => addTodo(textAreaValue)}/>
+				<TodoList todos={ todos }
+						newTodo= { newTodo }
+						removeTodo={ id => removeTodo(id) }
+						toggleItemStar={ id => toggleItemStar(id) }
+						toggleItemDone={ id => toggleItemDone(id) }
+				/>
+			</main>
+		</Container>
 	)
 }
 

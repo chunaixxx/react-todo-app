@@ -1,0 +1,24 @@
+.form {
+	margin-top: 15px;
+}
+
+.form__inner {
+	display: flex;
+	width: 100%;
+}
+
+.form__textarea {
+	width: 100%;
+}
+
+.form__warn {
+	margin-top: 10px;
+	color: #333;
+	transition: .3s;
+	opacity: 0;
+	font-size: 0.9em;
+}
+
+.form__warn_active {
+	opacity: 1;
+}
