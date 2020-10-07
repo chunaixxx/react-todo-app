@@ -35,7 +35,7 @@ let TodoSwitcher = props => {
 				</div>
 				<Switch 
 					onClick={() => props.toggleDoneSwitcher()}
-					color='primary'
+					color="default"
 				/>
 			</div>
 			<div className={ 'switcher' }>
@@ -44,7 +44,7 @@ let TodoSwitcher = props => {
 				</div>
 				<Switch 
 					onClick={() => props.toggleImportantSwitcher()}
-					color='primary'
+					color="default"
 				/>
 			</div>
 		</div>		
