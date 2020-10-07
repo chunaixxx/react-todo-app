@@ -5,18 +5,29 @@
 
 .list__item {
 	position: relative;
-
 	display: flex;
 	justify-content: space-between;
-
 	background-color: #fff;
 	box-shadow: 0 7px 14px rgba(0,0,0,0.1);
 
+	overflow: hidden;
+	min-height: 0px;
+	height: 0px;
+
+	margin-bottom: 0px;
+	padding: 0;
+
+	transition: .3s, opacity .1s;
+	transform: scale(0);
+}
+
+
+/* Новая задача */
+.list__item_added {
 	margin-bottom: 10px;
 	padding: 5px 30px;
 	
 	transition: .3s;
-
 	min-height: 50px;
 	transform: scale(1);
 }
@@ -36,19 +47,6 @@
 	transition: .3s;
 }
 
-/* Новая задача */
-.list__item_add {
-	overflow: hidden;
-	min-height: 0px;
-	height: 0px;
-
-	margin-bottom: 0px;
-	padding: 0;
-
-	transition: .3s;
-	transform: scale(0);
-}
-
 /* Удаление задачи */
 .list__item_delete {
 	min-height: 0px;
@@ -57,6 +55,7 @@
 	padding: 0 30px;
 	margin-bottom: 0px;
 	transform: scale(0);
+	opacity: 0;
 }
 
 .list__item_delete:before {

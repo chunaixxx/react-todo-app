@@ -1,10 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import TodoListItem from './TodoListItem/TodoListItem';
 import './TodoList.css';
 
 const TodoList = props => {
-	const [ isAnimated, setIsAnimated ]= useState(false);
+	const [ isAnimated, setIsAnimated ] = useState(false);
+	// filterOptions
+	const [ todosFiltered, setTodosFiltered ] = useState(props.todos);
+
+	useEffect(() => {
+		const {done, important } = props.filterOptions;
+		const todos = props.todos;
+
+		switch(true) {
+			case done && important:
+				setTodosFiltered(todos.filter(todo => !!todo.done && !!todo.important));
+				break;
+			case done:
+				setTodosFiltered(todos.filter(todo => !!todo.done));
+				break;
+			case important:
+				setTodosFiltered(todos.filter(todo => !!todo.important))
+				break;
+			default:
+				setTodosFiltered(todos);
+		}
+	}, [props.filterOptions, props.todos])
 
 	const todoDeleteAnimation = (el, id) => {
 		// Проверяем анимирован ли список
@@ -25,7 +46,7 @@ const TodoList = props => {
 	return (					
 		<ul className={ 'list' }>
 			{
-				props.todos.map(todo =>                
+				todosFiltered.map(todo =>                
 					(
 						<TodoListItem 
 							key={ todo.id }

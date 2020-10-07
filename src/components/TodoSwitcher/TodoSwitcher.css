@@ -1,0 +1,13 @@
+.switchers {
+	display: flex;
+}
+
+.switcher {
+	display: flex;
+	align-items: center;
+}
+
+.switcher__container {
+	display: flex;
+	align-items: center;
+}

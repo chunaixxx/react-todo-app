@@ -43,22 +43,14 @@ const TodoListItem = props => {
 		props.toggleItemDone(id);
 	}
 
-	// Является ли задча новой в списке? Если да, то добавляем класс с анимацией
-	useEffect(() => {
-		if (props.newTodo) {
-			setClassTodoItem('list__item list__item_add');
-	
-			setTimeout(() => {
-				setClassTodoItem('list__item')
-			}, 300);
-		}
+	useEffect(() =>	{ 
+		setTimeout(() => setClassTodoItem('list__item list__item_added'), 300)
 	}, [])
 
-	let { id, text, done, important } = props.item;
 
+	const { id, text, done, important } = props.item;
 	return (
 		<li className={classTodoItem} ref={ todoRef } >
-			{/* Содержимое задачи */}
 			<div 
 				className={ done ? 'list__text list__text_done' : 'list__text'} 
 				ref={ todoTextRef }
@@ -67,7 +59,6 @@ const TodoListItem = props => {
 			</div>
 
 			<div className={ 'list__container' }>
-				{/* Выполнение задачи*/}
 				<Checkbox
 					className={ classes.list__done }
 					checked={done ? true : false}
@@ -75,7 +66,6 @@ const TodoListItem = props => {
 					color='default'
 				/>
 
-				{/* Важность задачи*/}
 				<Checkbox
 					className={ classes.list__importantCheckbox }
 					color='default'
@@ -85,7 +75,6 @@ const TodoListItem = props => {
 					checkedIcon={ <StarIcon className={ classes.list__importantIcon_checked } /> }
 				/>
 
-				{/* Удаление задачи*/}
 				<IconButton 
 					className={ classes.list__delete }
 					onClick={ () => props.todoDeleteAnimation(todoRef.current, id) }
