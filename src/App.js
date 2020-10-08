@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import './styles/App.css';
 
+import Container from '@material-ui/core/Container';
+
+import Tooltip from '@material-ui/core/Tooltip';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import TodoSwitcher from './components/TodoSwitcher/TodoSwitcher';
+
 import TodoForm from './components/TodoForm/TodoForm';
 import TodoList from './components/TodoList/TodoList';
-import Container from '@material-ui/core/Container';
 
 const App = () => {
 	const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || []);
@@ -70,7 +74,22 @@ const App = () => {
 		<Container maxWidth='md'> 
 			<main className='main'>
 				<div className='main__inner'>
-					<h1 className='main__title'>Мой список задач</h1>
+					<div className='main__inner'>
+						<h1 className='main__title'>Мой список задач</h1>
+
+						<div className='main__help'>
+							<Tooltip title={
+									<>
+										<h3>Горячие клавиши:</h3>
+										<div>Enter - добавить задачу в список</div>
+									</>
+								}
+							>
+								<HelpOutlineIcon fontSize='small' />
+							</Tooltip>
+						</div>
+					</div>
+
 					<TodoSwitcher 
 						toggleImportantSwitcher={() => toggleImportantSwitcher()}
 						toggleDoneSwitcher={() => toggleDoneSwitcher()}

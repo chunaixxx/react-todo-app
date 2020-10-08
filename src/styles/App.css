@@ -34,3 +34,15 @@ body {
 	display: flex;
 	justify-content: space-between;
 }
+
+.main__help {
+	align-self: flex-end;
+	color: #333;
+	margin-left: 5px;
+	position: relative;
+	bottom: 1px;
+}
+
+.main__help:hover {
+	cursor: help;
+}
