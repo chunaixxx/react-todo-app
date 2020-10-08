@@ -1,54 +1,59 @@
-import React, { useState, useRef, useEffect } from "react";
-import { makeStyles } from '@material-ui/core/styles';
-
-import Checkbox from '@material-ui/core/Checkbox';
-
-import Switch from '@material-ui/core/Switch';
-import StarIcon from '@material-ui/icons/Star';
+import React from "react";
 
 import './TodoSwitcher.css';
 
-// Material UI CSS
-const useStyles = makeStyles((theme) => ({
-	switcher__done: {
-		'&.Mui-checked': {
-			color: '#4caf50',
-		}
-	},
-	switcher__star: {
-		color: '#ffd847'
-	}
-}));
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
-let TodoSwitcher = props => {
-	const classes = useStyles();
+import Switch from '@material-ui/core/Switch';
+import CheckBoxIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import StarIcon from '@material-ui/icons/Star';
+import Tooltip from '@material-ui/core/Tooltip';
 
-	return (
+const TodoSwitcher = props =>
+	(
 		<div className={ 'switchers' }>
 			<div className={ 'switcher' }>
-				<div className={ 'switcher__container' }>
-					<Checkbox
-						className={ classes.switcher__done }
-						checked={ true }
-						color='default'
+				<Tooltip title='Показать невыполненные'>
+					<FormControlLabel
+							label={
+								<div className={ 'switcher__container_done' }>
+									<CheckBoxIcon />
+								</div>
+							}
+
+							control={
+								<Switch 
+									onClick={() => props.toggleDoneSwitcher()}
+									color="default"
+								/>
+							}
+
+							labelPlacement='start'
 					/>
-				</div>
-				<Switch 
-					onClick={() => props.toggleDoneSwitcher()}
-					color="default"
-				/>
+				</Tooltip>
 			</div>
+
 			<div className={ 'switcher' }>
-				<div className={ 'switcher__container' }>
-					<StarIcon className={ classes.switcher__star } />
-				</div>
-				<Switch 
-					onClick={() => props.toggleImportantSwitcher()}
-					color="default"
-				/>
+				<Tooltip title='Показать важные'>
+					<FormControlLabel
+							label={
+								<div className={ 'switcher__container_star' }>
+									<StarIcon />
+								</div>
+							}
+
+							control={
+								<Switch 
+									onClick={() => props.toggleImportantSwitcher()}
+									color="default"
+								/>
+							}
+
+							labelPlacement='start'
+					/>
+				</Tooltip>
 			</div>
 		</div>		
 	)
-}
 
 export default TodoSwitcher;

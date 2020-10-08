@@ -14,10 +14,10 @@ const TodoList = props => {
 
 		switch(true) {
 			case done && important:
-				setTodosFiltered(todos.filter(todo => !!todo.done && !!todo.important));
+				setTodosFiltered(todos.filter(todo => !todo.done && !!todo.important));
 				break;
 			case done:
-				setTodosFiltered(todos.filter(todo => !!todo.done));
+				setTodosFiltered(todos.filter(todo => !todo.done));
 				break;
 			case important:
 				setTodosFiltered(todos.filter(todo => !!todo.important))

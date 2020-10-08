@@ -7,7 +7,14 @@
 	align-items: center;
 }
 
-.switcher__container {
+.switcher__container_done {
 	display: flex;
 	align-items: center;
+	color: rgba(0, 0, 0, 0.54);
+}
+
+.switcher__container_star {
+	display: flex;
+	align-items: center;
+	color: #ffd847;
 }
