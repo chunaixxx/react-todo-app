@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 
 import { makeStyles } from '@material-ui/core/styles';
+import './TodoListItem.css';
+
 
 import Checkbox from '@material-ui/core/Checkbox';
 import StarIcon from '@material-ui/icons/Star';
