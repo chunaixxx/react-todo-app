@@ -74,7 +74,7 @@ const App = () => {
 		<Container maxWidth='md'> 
 			<main className='main'>
 				<div className='main__inner'>
-					<div className='main__inner'>
+					<div className='main__title-container'>
 						<h1 className='main__title'>Мой список задач</h1>
 
 						<div className='main__help'>

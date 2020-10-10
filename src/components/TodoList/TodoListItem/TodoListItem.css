@@ -4,15 +4,14 @@
 	justify-content: space-between;
 	background-color: #fff;
 	box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-
-	overflow: hidden;
-	min-height: 0px;
-	height: 0px;
-
 	margin-bottom: 0px;
 	padding: 0;
 
+
 	transition: .3s, opacity .1s;
+	opacity: 0;
+	max-height: 0;
+	overflow: hidden;
 	transform: scale(0);
 }
 
@@ -20,11 +19,15 @@
 /* Новая задача */
 .list__item_added {
 	margin-bottom: 10px;
-	padding: 5px 30px;
-	
-	transition: .3s;
-	min-height: 50px;
+	padding: 5px 20px;
+	overflow: hidden;
+
+	opacity: 1;
+
+	transition: .3s, opacity .1s;
 	transform: scale(1);
+	
+	max-height: 300px;
 }
 
 /* Создание белого фона, который появляется сверху при удалении*/
@@ -44,13 +47,14 @@
 
 /* Удаление задачи */
 .list__item_delete {
-	min-height: 0px;
-	height: 0px;
-	overflow: hidden;
-	padding: 0 30px;
+	padding: 0;
 	margin-bottom: 0px;
-	transform: scale(0);
+	overflow: hidden;
+
 	opacity: 0;
+	transition: .3s, opacity .1s;
+	max-height: 0;
+	transform: scale(0);
 }
 
 .list__item_delete:before {
@@ -59,11 +63,14 @@
 }
 
 .list__text {
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	position: relative;
 	color: #333;
 	transition: .3s;
+	padding-left: 9px;
+	word-break: break-word;
+	width: 100%;
 }
 
 .list__text_done {
@@ -73,4 +80,18 @@
 
 .list__container {
 	display: flex;
+}
+
+
+@media (max-width: 550px) {
+	.list__item {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.list__text {
+		margin-top: 10px;
+		padding-left: 0px;
+		justify-content: center;
+	}
 }

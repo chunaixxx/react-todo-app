@@ -18,3 +18,9 @@
 	align-items: center;
 	color: #ffd847;
 }
+
+@media (max-width: 550px) {
+	.switchers {
+		margin-top: 10px;
+	}
+}
