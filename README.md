@@ -1,11 +1,17 @@
 # TODO APP
-Простое клиентское TODO приложение с использованием фреймворка *React.js*, *Material UI*
+Простое клиентское TODO приложение с использованием фреймворка *React.js (hooks)*, *Material UI*
 
 ## Демонстрация
 [нажми на меня](https://chunaixxx.github.io/react-todo-app/)
 
 ## Установка
-`npm i`
+1. `git clone https://github.com/chunaixxx/react-todo-app`
+2. `npm i`
+3. `npm run`
+	- `npm run start` (Для разработки)
+	- `npm run build` (Для готового проекта)
+4. В папке `/dist` открыть `index.html`
 
-## Запуск
-Открыть `/dist/index.html` в браузере
+## TODO для TODO
+1. Пофиксить баги с анимацией
+2. Вынести функционал добавление и удаления анимации в один метод
