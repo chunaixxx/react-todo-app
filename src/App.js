@@ -98,11 +98,14 @@ const App = () => {
 				</div>
 
 				<TodoForm addTodo={(textAreaValue) => addTodo(textAreaValue)}/>
-				<TodoList todos={ todos }
+				<TodoList 
+					todos={ todos }
 					newTodo= { newTodo }
+
 					removeTodo={ id => removeTodo(id) }
 					toggleItemStar={ id => toggleItemStar(id) }
 					toggleItemDone={ id => toggleItemDone(id) }
+					
 					filterOptions={ filterOptions }
 				/>
 			</main>

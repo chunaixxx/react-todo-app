@@ -4,30 +4,13 @@
 	justify-content: space-between;
 	background-color: #fff;
 	box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-	margin-bottom: 0px;
-	padding: 0;
-
-
-	transition: .3s, opacity .1s;
-	opacity: 0;
-	max-height: 0;
-	overflow: hidden;
-	transform: scale(0);
-}
-
-
-/* Новая задача */
-.list__item_added {
 	margin-bottom: 10px;
 	padding: 5px 20px;
-	overflow: hidden;
 
-	opacity: 1;
 
 	transition: .3s, opacity .1s;
-	transform: scale(1);
-	
 	max-height: 300px;
+	overflow: hidden;
 }
 
 /* Создание белого фона, который появляется сверху при удалении*/
