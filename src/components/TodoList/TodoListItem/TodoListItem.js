@@ -45,11 +45,6 @@ const TodoListItem = props => {
 		props.toggleItemDone(id);
 	}
 
-	useEffect(() =>	{ 
-		setTimeout(() => setClassTodoItem('list__item list__item_added'), 300)
-	}, [])
-
-
 	const { id, text, done, important } = props.item;
 	return (
 		<li className={classTodoItem} ref={ todoRef } >
@@ -79,7 +74,7 @@ const TodoListItem = props => {
 
 				<IconButton 
 					className={ classes.list__delete }
-					onClick={ () => props.todoDeleteAnimation(todoRef.current, id) }
+					onClick={ () => props.removeTodo() }
 				>
 					<DeleteIcon />
 				</IconButton>
