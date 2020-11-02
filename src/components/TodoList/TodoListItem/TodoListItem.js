@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
 const TodoListItem = props => {
 	const classes = useStyles();
 
-	const [classTodoItem, setClassTodoItem] = useState('list__item');
 	const todoRef = useRef(null);
 	const todoTextRef = useRef(null);
 
@@ -47,7 +46,7 @@ const TodoListItem = props => {
 
 	const { id, text, done, important } = props.item;
 	return (
-		<li className={classTodoItem} ref={ todoRef } >
+		<li className={'list__item'} ref={ todoRef } >
 			<div 
 				className={ done ? 'list__text list__text_done' : 'list__text'} 
 				ref={ todoTextRef }
